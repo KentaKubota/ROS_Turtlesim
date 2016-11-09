@@ -1,32 +1,19 @@
-/*
-The MIT License (MIT)
-Copyright (c) 2016  Kenta Kubota
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
+// ROSに関する基本的なAPIをインクルード
+#include <ros/ros.h>
+// Twist.msgから生成されたメッセージを定義しているヘッダをインクルード
+#include <geometry_msgs/Twist.h>
+// Pose.msgから生成されたメッセージを定義しているヘッダをインクルード
+#include <turtlesim/Pose.h>
 
-#include "ros/ros.h"
-#include "geometry_msgs/Twist.h"
-#include "turtlesim/Pose.h"
-#include <sstream>
 
-using namespace std;
-
+//パブリッシャーの定義    (メッセージ送信)
 ros::Publisher velocity_publisher;
+//サブスクライバーの定義  (メッセージ受信)
 ros::Subscriber pose_subscriber;
+
+//サブスクライバーの定義  (メッセージ受信)
+geometry_msgs::Twist vel_msg;
+//サブスクライバーの定義  (メッセージ受信)
 turtlesim::Pose turtlesim_pose;
 
 const double PI = 3.14159265359;
@@ -92,7 +79,6 @@ void move(double speed, double distance, bool isForward)
      double t1;
      double current_distance = 0;
 
-     geometry_msgs::Twist vel_msg;
      //set a rondom linear velocity in the x-axis
      vel_msg.linear.x =0;
      vel_msg.linear.y =0;
@@ -131,7 +117,6 @@ void rotate(double angular_speed, double relative_angle, bool clockwise)
      double t1;
      double current_angle = 0.0;
 
-     geometry_msgs::Twist vel_msg;
      //set a rondom linear velocity in the x-axis
      vel_msg.linear.x = 0;
      vel_msg.linear.y = 0;
@@ -170,7 +155,6 @@ void writeCircle(double radius, double turn_angle, bool clockwise)
      double t1;
      double current_angle = 0.0;
 
-     geometry_msgs::Twist vel_msg;
      //set a rondom linear velocity in the x-axis
      vel_msg.linear.x = 0;
      vel_msg.linear.y = 0;

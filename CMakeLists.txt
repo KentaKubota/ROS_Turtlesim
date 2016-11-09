@@ -191,3 +191,6 @@ include_directories(
 
 add_executable(turtle_move src/turtle_move.cpp)
 target_link_libraries(turtle_move ${catkin_LIBRARIES})
+
+add_executable(ttest src/ttest.cpp)
+target_link_libraries(ttest ${catkin_LIBRARIES})
