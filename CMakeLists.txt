@@ -191,3 +191,7 @@ include_directories(
 
 add_executable(turtle_move src/turtle_move.cpp)
 target_link_libraries(turtle_move ${catkin_LIBRARIES})
+
+add_executable(icart_move src/icart_move.cpp)
+target_link_libraries(icart_move ${catkin_LIBRARIES})
+
