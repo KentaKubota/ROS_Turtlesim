@@ -16,24 +16,24 @@ void writeCircle();
 
 int main(int argc, char **argv)
 {
-    // ノード名をicart_moveとしてROSの初期化をする
-    ros::init(argc, argv, "icart_move");
+    // ノード名をfetch_moveとしてROSの初期化をする
+    ros::init(argc, argv, "fetch_move");
     // 名前nでノードのネームスペースを生成
     ros::NodeHandle n;
 
     // velocity_publisherは"/turtle1/cmd_vel"というトピック名でTwist型のメッセージを送信するものと定義. 
     // キューのサイズは10.　10個のメッセージを保持する
-    velocity_publisher = n.advertise<geometry_msgs::Twist>("/icart_mini/cmd_vel", 10);
+    velocity_publisher = n.advertise<geometry_msgs::Twist>("/cmd_vel", 10);
 
 
     // スクリーンに文字を出力
-    ROS_INFO("\n************** Start the turtle moving **************\n");
+    ROS_INFO("\n************** Start the fetch moving **************\n");
 
     while(ros::ok()){
         writeCircle();
     }
 
-    ROS_INFO("\n************** Finished the turtle moving **************\n");
+    ROS_INFO("\n************** Finished the fetch moving **************\n");
     return 0;
 }
 
